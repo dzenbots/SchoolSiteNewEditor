@@ -75,7 +75,7 @@ class SchoolSiteWorker(Session):
         self._authorized = self._access_token is not None
         return self._authorized
 
-    def get_school_page_id(self, page_path, page_content):
+    def edit_page_content(self, page_path, page_content):
         request = self.post(
             url=self._school_url + '/v1/api/page/id',
             headers={

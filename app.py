@@ -18,7 +18,7 @@ if __name__ == '__main__':
     )
     worker.authorize()
     if worker.authorized():
-        worker.get_school_page_id(
+        worker.edit_page_content(
             page_path=env.str('PAGE_PATH'),
             page_content=new_content
         )
