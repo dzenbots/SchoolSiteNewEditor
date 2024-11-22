@@ -1,0 +1,15 @@
+beautifulsoup4==4.12.3
+certifi==2024.8.30
+charset-normalizer==3.4.0
+environs==11.2.1
+Faker==30.6.0
+idna==3.10
+marshmallow==3.23.1
+packaging==24.2
+python-dateutil==2.9.0.post0
+python-dotenv==1.0.1
+requests==2.32.3
+six==1.16.0
+soupsieve==2.6
+typing_extensions==4.12.2
+urllib3==2.2.3
