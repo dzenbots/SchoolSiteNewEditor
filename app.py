@@ -18,7 +18,13 @@ if __name__ == '__main__':
     )
     worker.authorize()
     if worker.authorized():
-        worker.edit_page_content(
+        print('Аавторизация успешна. Пробую заменить контент страницы...')
+        if worker.edit_page_content(
             page_path=env.str('PAGE_PATH'),
             page_content=new_content
-        )
+        ):
+            print(f'Обновление контента страницы прошло успешно. Результат можете посмотреть по ссылке: {env.str('SCHOOL_SITE_URL')}{env.str('PAGE_PATH')}')
+        else:
+            print('Что-то пошло не так. Попробуйте позже')
+    else:
+        print('Аавторизация не пройдена. Проверьте правильность указания логина и пароля от ЛК Маяк')

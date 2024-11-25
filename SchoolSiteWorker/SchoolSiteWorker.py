@@ -36,12 +36,14 @@ class SchoolSiteWorker(Session):
         self.get(
             url=self._school_url,
         )
-        self.get(
+        req = self.get(
             url=self._school_url + '/logout',
             headers={
                 'Authorization': 'Bearer'
             }
         )
+        if req.status_code == 200:
+            print('Сайт доступен. Пробую авторизоваться... ')
 
         request = self.get(
             url=self._school_url + '/v1/login',
@@ -86,6 +88,8 @@ class SchoolSiteWorker(Session):
             },
         )
         page_id = request.json()['data']['id']
+        page_title = request.json()['data']['title']
+        print(f'Начинаю обновление на странице сайта: {page_title}')
         resp = self.get(
             url=self._school_url + '/v1/api/page/content/' + str(page_id),
         )
@@ -115,3 +119,4 @@ class SchoolSiteWorker(Session):
                 ]
             }
         )
+        return resp.status_code == 200
